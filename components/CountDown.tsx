@@ -25,12 +25,12 @@ export default function CountDown() {
         {count === 0 ? (
           <StopBtnComp />
         ) : (
-          <button className="bg-white text-slate-400 text-2xl font-medium shadow-md w-[10rem] h-[10rem] rounded-full flex items-center justify-center">
+          <button className="bg-white  text-2xl font-medium shadow-md w-[10rem] h-[10rem] rounded-full flex items-center justify-center">
             {count}
           </button>
         )}
         {useIsRecordingStopAto ? (
-          <button className="bg-[#FFB98A] relative text-slate-400 text-md font-medium shadow-md w-[6rem] h-[6rem] rounded-full flex items-center justify-center">
+          <button className="bg-[#FFB98A] relative  text-md font-medium shadow-md w-[6rem] h-[6rem] rounded-full flex items-center justify-center">
             Resume
             <div className="w-[6rem] absolute h-[6rem] hover:w-[5rem] hover:transition-all duration-150 hover:h-[5rem] border-[0.3px] hover:border-slate-400 border-transparent rounded-full"></div>
           </button>

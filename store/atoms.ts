@@ -12,13 +12,15 @@ export const IsTimerUpAtom = atom({
   key: "IsTimerUpAtom",
   default: false,
 });
-
 export const MediaRecorderAtom = atom<MediaRecorder | null>({
   key: "MediaRecorderAtom",
   default: null,
 });
-
 export const WaveAtom = atom({
   key: "WaveAtom",
   default: false,
 });
+export const StarBackgroundImageAtom = atom({
+  key:"StarBackgroundImageAtom",
+  default: true
+})

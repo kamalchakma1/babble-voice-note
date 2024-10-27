@@ -5,26 +5,26 @@ import StartBtnComp from "./StartBtnComp";
 import { PiWaveformLight } from "react-icons/pi";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { useRecoilValue } from "recoil";
-import { IsRecordingStartAtom, WaveAtom } from "@/store/atoms";
+import { IsRecordingStartAtom, StarBackgroundImageAtom, WaveAtom } from "@/store/atoms";
 import Wave from "react-wavify";
 const reenie_beanie = Reenie_Beanie({ weight: "400", subsets: ["latin"] });
-
 export default function AudioRecorder() {
   const isRecordingStart = useRecoilValue(IsRecordingStartAtom);
+  const starBackgroundImageAto = useRecoilValue(StarBackgroundImageAtom);
   const waveAtomAto = useRecoilValue(WaveAtom);
   return (
-    <div className="w-[100%] h-screen flex flex-col pt-6 gap-2 items-center justify-center bg-[#2F4858]">
+    <div className={`w-[100%] h-screen flex flex-col pt-6 gap-2 items-center justify-center ${starBackgroundImageAto?'bg-babble_bg_image':'bg-[#2F4858]'}  bg-cover bg-center`}>
       {/* TITLE */}
-      <h4 className="text-white text-2xl tracking-widest ">
+      <h4 className={`text-white text-2xl tracking-widest ${reenie_beanie.className}`}>
         {!isRecordingStart ? (
-          <span className={reenie_beanie.className}>Babble</span>
+          <span>Babble</span>
         ) : null}
       </h4>
 
       {/* CONTAINER  */}
       <div className="w-[100%] h-screen flex items-center justify-center">
         <div
-          className={`w-[90%] h-[75%] relative flex bg-transparent z-40 items-center justify-center rounded-md  ${
+          className={`w-[90%] h-[85%] relative flex bg-transparent z-40 items-center justify-center rounded-md  ${
             !isRecordingStart ? "border-[0.1px]" : "border-0"
           } border-slate-600`}
         >
@@ -47,8 +47,8 @@ export default function AudioRecorder() {
 
       {/* WAVES */}
       {waveAtomAto ? (
-        <div className="w-screen h-[20rem] bg-yellow-400 flex flex-col items-center absolute bottom-0 ">
-          <span className="w-screen -mt-12">
+        <div className="w-screen h-[25rem] bg-transparent flex flex-col items-center absolute bottom-0 ">
+          <span className="w-screen -mt-14">
             <Wave
               fill="#FEEE91"
               paused={false}
@@ -56,12 +56,25 @@ export default function AudioRecorder() {
               options={{
                 height: 30,
                 amplitude: 50,
-                speed: 0.15,
-                points: 3,
+                speed: 0.10,
+                points: 5,
               }}
             />
           </span>
-          <span className="w-screen -mt-[10rem] ">
+          <span className="w-screen -mt-16">
+          <Wave
+            fill="#E4C087"
+            paused={false}
+            style={{ display: "flex" }}
+            options={{
+              height: 30,
+              amplitude: 50,
+              speed: 0.15,
+              points: 3,
+            }}
+          />
+        </span>
+          <span className="w-screen -mt-[12rem] ">
             <Wave
               fill="#FFB684"
               paused={false}
@@ -69,12 +82,12 @@ export default function AudioRecorder() {
               options={{
                 height: 30,
                 amplitude: 50,
-                speed: 0.2,
+                speed: 0.20,
                 points: 2,
               }}
             />
           </span>
-          <span className="w-screen bg-[#FFB684] h-[15rem]"></span>
+          <span className="w-screen bg-[#FFB684] h-[20rem]"></span>
         </div>
       ) : null}
     </div>

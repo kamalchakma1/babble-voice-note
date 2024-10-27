@@ -3,11 +3,13 @@ import Button from "./Button";
 import {
   IsRecordingStartAtom,
   MediaRecorderAtom,
+  StarBackgroundImageAtom,
   WaveAtom,
 } from "@/store/atoms";
 import { useCallback } from "react";
 export default function StartBtnComp() {
   const setIsRecordingStartAto = useSetRecoilState(IsRecordingStartAtom);
+  const setStarBackgroundImageAto = useSetRecoilState(StarBackgroundImageAtom);
   const [mediaRecorderAto, setMediaRecorderAto] = useRecoilState(MediaRecorderAtom);
   const setWaveAto = useSetRecoilState(WaveAtom);
   // RECORDING START FUNCTION
@@ -17,6 +19,7 @@ export default function StartBtnComp() {
     setMediaRecorderAto(mediaRecorder);
     mediaRecorderAto?.start();
     setIsRecordingStartAto(true);
+    setStarBackgroundImageAto(false);
     setWaveAto(true);
   }, [mediaRecorderAto]);
   return (
